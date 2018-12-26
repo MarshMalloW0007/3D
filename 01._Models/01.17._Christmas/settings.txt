@@ -1,0 +1,6 @@
+0,15 layer height
+infill  0
+vase mode (spiralize outer contour)
+initial fan speed 50%
+flow 125%
+no support, brim optional
