@@ -196,50 +196,42 @@ M82
 M106 S0
 M140 S60
 M190 S60
-;Init 181010
-;G28 			; Home all axes
-;G1 Z5 F3000 		; Lift
-;G92 E0			; Reset extrusion distance
-; // From Cura 181010
-; // Update 190823 (GueroLoco)
-; // Update 191005 Autoleveling
-; // Update 192029 Modify Cleaning
-; // Start_gcode
-M117 *Start Clean*		; Indicate nozzle clean in progress on LCD
+;
+; -]H.P.B[- MarshMalloW  
+; $VER: StartScript 1.01 (13.11.2019) MarshMalloW
+;
+; Begin Startcode
+;
+M117 *Start Clean*     ; Indicate nozzle clean in progress on LCD
 ;
 M104 S215 
 M109 S215 
 M109 R215 
 ;
-M107			; Turn layer fan off
-G21			; Set to metric [change to G20 if you want Imperial]
-G90			; Force coordinates to be absolute relative to the origin
-G28			; Home X/Y/Z axis
-G29			; Auto-leveling
+M107                   ; Turn layer fan off
+G21                    ; Set to metric [change to G20 if you want Imperial]
+G90                    ; Force coordinates to be absolute relative to the origin
+G28                    ; Home X/Y/Z axis
+G29                    ; Auto-leveling (BL-Touch)
 ;
-;G1 X3 Y1 Z15 F9000		; Move safe Z height to shear strings
-;G0 X1 Y1 Z0.2 F9000		; Move in 1mm from edge and up [z] 0.2mm
-;G92 E0			; Set extruder to [0] zero
-;G1 X100 E12 F500		; Extrude 30mm filiment along X axis 100mm long to prime and clean the nozzle
-;G92 E0			; Reset extruder to [0] zero end of cleaning run
-;G1 E-1 F500			; Retract filiment by 1 mm to reduce string effect
-;G1 X180 F4000		; Quick wipe away from the filament line / purge
-;
-G92 E0			; Set Extruder to 0 
-G1 X0 Y0 F2000		; Move X and Y to 0 with speed 2000 (mm/min)
-G1 Z0.1 F1000		; Move Z to 0.1
-G1 X8.0 F2000		; Move X to 8.0
-G1 Y60.0 E4.0 F1000.0		; Prime - Move Y to 60 and Extruder with 4.0
-G1 Y100.0 E8.5 F1000.0		; Prime - Move Y to 100 and Extruder with 8.5
-G92 E0			; Set extruder to 0
-M117 *End Clean*		; Indicate nozzle clean in progress on LCD
-G1 X16.0 F3000		; Move X to 16.0
-G1 Y-20.0 F3000		; Move Y to -20.0
-G1 Z5 F3000			; Move Z to 5 - Lift
-G1 X20.0 F3000		; Move X to 20.0
+G92 E0                 ; Set Extruder to 0 
+G1 X0 Y0 F2000         ; Move X and Y to 0 with speed 2000 (mm/min)
+G1 Z0.1 F1000          ; Move Z to   0.1 with speed 1000 (mm/min)
+G1 X8.0 F2000          ; Move X to   8.0 with speed 2000 (mm/min)
+G1 Y60.0 E4.0 F1000.0  ; Move Y to  60 and Extruder with 4.0 with speed 1000 (mm/min)
+G1 Y100.0 E8.5 F1000.0 ; Move Y to 100 and Extruder with 8.5 with speed 1000 (mm/min)
+G92 E0                 ; Set extruder to 0
+G1 X16.0 F3000         ; Move X to 16.0 with speed 3000 (mm/min)
+G1 Y60.0 F3000         ; Move Y to 60.0 with speed 3000 (mm/min)
+M117 *End Clean*       ; Indicate nozzle clean in progress on LCD
+G1 Z5 F3000            ; Move Z to  5.0 with speed 3000 (mm/min)
+G1 X20.0 F3000         ; Move X to 20.0 with speed 3000 (mm/min)
 ; 
-M117 *Printing...*		; start msg
-; // Begin printing with sliced GCode after here
+M117 *Printing...*     ; Start printing msg on LCD
+;
+; End Startcode
+;
+; Begin printing with sliced GCode after here
 ;
 ; process Process1
 ; layer 1, Z = 0.180
