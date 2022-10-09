@@ -41,8 +41,8 @@ if(isset($_GET['inputfile']) && isset($_GET['outputfile'])) {
 			if(!strstr($line, 'postProcessing') && strstr($line, $strsearch)) {
 				//On récupère le numéro après $strsearch
 				$num = substr($line, -(strlen($line)-strlen($strsearch)));
-				echo $num;
-				
+				if ($num == "end") echo "End";
+							
 				if($optionM117) {
 					//On ajout "M117 INDICATOR-Layerxx" après la ligne en cours
 					$line = '; layer '.$num.$line;
@@ -59,12 +59,15 @@ if(isset($_GET['inputfile']) && isset($_GET['outputfile'])) {
 				exit;
 			}
 		}
+		echo "Fermeture du fichier $inputfilename\n";
 		fclose($fout);
+		echo "Fermeture du fichier $outputfilename\n";
 		fclose($f);
+		echo "Fin du script";
 	} else {
-		echo 'Le fichier n\'est pas accessible en lecture !';
+		echo "Le fichier $inputfilename n'est pas accessible en lecture !";
 	}
 } else {
 	echo 'Syntaxe : php -f .\ChangeLayer.php inputfile=".\xxx.gcode" outputfile=".\xxx.gcode (M117)';	
 }
-
+exit;
