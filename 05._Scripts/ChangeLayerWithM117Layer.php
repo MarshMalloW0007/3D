@@ -45,7 +45,8 @@ if(isset($_GET['inputfile']) && isset($_GET['outputfile'])) {
 		$strsearch = 'M117 INDICATOR-Layer';
 		foreach ($lines as $line) {
 			if(!strstr($line, 'postProcessing') && strstr($line, $strsearch)) {
-				//On récupère le numéro après $strsearch on ajout "; layer xx"
+				//On récupère le numéro après $strsearch
+				//On ajout "; layer xx" avant la ligne en cours
 				$num = substr($line, -(strlen($line)-strlen($strsearch)));
 				$line = '; layer '.$num.$line;
 			}
