@@ -14,15 +14,17 @@ if(isset($_GET['inputfile']) && isset($_GET['outputfile'])) {
 	$outputfilename = $_GET['outputfile'];
 
 	if(is_readable($inputfilename)) {
+		echo "Ouverture du fichier $inputfilename\n";
 		$f = fopen($inputfilename, 'r');
 		if (!$f) {
 			echo "Impossible d'ouvrir le fichier ($inputfilename) en lecture";
 			exit;
 		}
 		
+		echo "Ouverture du fichier $outputfilename\n";
 		$fout = fopen($outputfilename, 'w');
 		if (!$fout) {
-			echo "Impossible d'ouvrir le fichier ($outputfilename) en ecriture";
+			echo "Impossible d'ouvrir le fichier ($outputfilename) en écriture";
 			exit;
 		}
 

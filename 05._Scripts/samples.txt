@@ -1,0 +1,3 @@
+php -f .\ChangeLayer.php inputfile="d:\Repositories\3D\01._Models\01.65._Trash\TT-S3D-Trash_PrinterTevoTornado2-1P-P13_04_15.gcode" outputfile="d:\Repositories\3D\01._Models\01.65._Trash\TT-S3D-Trash_PrinterTevoTornado2II-1P-P13_04_15.gcode" M117
+
+php .\MetaDataLayer4OctoPrint2.php f="TestMetaData.gcode"
